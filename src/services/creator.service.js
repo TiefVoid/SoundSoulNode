@@ -13,6 +13,11 @@ class CreatorService {
         return res
     }
 
+    async findFiltered(data) {
+        const res = await models.Creator.findOne({ where: { name: data } })
+        return res
+    }
+
     async create(data) {
         const res = await models.Creator.create(data)
         return res

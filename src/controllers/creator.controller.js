@@ -29,6 +29,16 @@ const getById = async ( req,res ) => {
     }
 }
 
+const getByName = async ( req,res ) => {
+    try {
+        const { name } = req.params
+        const response = await service.findFiltered(name)
+        res.json( response )
+    } catch (error) {
+        res.status(500).send({ success: false, message: error.message })
+    }
+}
+
 const update = async ( req,res ) => {
     try {
         const { id } = req.params
@@ -51,5 +61,5 @@ const _delete = async ( req,res ) => {
 }
 
 module.exports = {
-    create,get,getById,update,_delete
+    create,get,getById,getByName,update,_delete
 }
