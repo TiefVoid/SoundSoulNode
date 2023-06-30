@@ -13,7 +13,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/', (req,res) => {
-    res.send('Backend NodeJS - Express - PostgreSQL')
+    res.send('SoundSoul')
 })
 
 routerApi(app)
