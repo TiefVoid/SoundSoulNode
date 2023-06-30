@@ -26,3 +26,5 @@ const CreatorSchema = {
         field: 'name'
     }
 }
+
+module.exports = { Creator, CreatorSchema }

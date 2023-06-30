@@ -1,4 +1,4 @@
-const { Creator, CreatorSchema } = require('./persons.model');
+const { Creator, CreatorSchema } = require('./creator.model');
 
 function setupModels(sequelize) {
     Creator.init(CreatorSchema, Creator.config(sequelize));

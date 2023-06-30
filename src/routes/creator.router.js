@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const creatorController = require('../controllers/persons.controller')
+const creatorController = require('../controllers/creator.controller')
 
 router
     .get('/',creatorController.get)
