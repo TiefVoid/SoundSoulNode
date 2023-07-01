@@ -3,7 +3,20 @@ const service = new CreatorService()
 
 const create = async ( req,res ) => {
     try {
-        const response = await service.create(req.body)
+        const body = req.body
+        body.name = body.name.toUpperCase()
+        const response = await service.create(body)
+        res.json({ success: true, data: response })
+    } catch (error) {
+        res.status(500).send({ success: false, message: error.message })
+    }
+}
+
+const getOrMake = async ( req,res ) => {
+    try {
+        const body = req.body
+        const name  = body.name.toUpperCase()
+        const response = await service.findOrMake(name)
         res.json({ success: true, data: response })
     } catch (error) {
         res.status(500).send({ success: false, message: error.message })
@@ -32,7 +45,7 @@ const getById = async ( req,res ) => {
 const getByName = async ( req,res ) => {
     try {
         const { name } = req.params
-        const response = await service.findFiltered(name)
+        const response = await service.findFiltered(name.toUpperCase())
         res.json( response )
     } catch (error) {
         res.status(500).send({ success: false, message: error.message })
@@ -43,6 +56,7 @@ const update = async ( req,res ) => {
     try {
         const { id } = req.params
         const body = req.body
+        body.name = body.name.toUpperCase()
         const response = await service.update(id,body)
         res.json( response )
     } catch (error) {
@@ -61,5 +75,5 @@ const _delete = async ( req,res ) => {
 }
 
 module.exports = {
-    create,get,getById,getByName,update,_delete
+    create,getOrMake,get,getById,getByName,update,_delete
 }

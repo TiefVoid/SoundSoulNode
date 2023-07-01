@@ -18,6 +18,11 @@ class CreatorService {
         return res
     }
 
+    async findOrMake(data) {
+        const res = await models.Creator.findCreateFind({ where: { name: data } })
+        return res
+    }
+
     async create(data) {
         const res = await models.Creator.create(data)
         return res
