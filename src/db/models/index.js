@@ -1,7 +1,7 @@
-const { Creator, CreatorSchema } = require('./creator.model');
+const { EntityType, EntityTypeSchema } = require('./entity_type.model');
 
 function setupModels(sequelize) {
-    Creator.init(CreatorSchema, Creator.config(sequelize));
+    EntityType.init(EntityTypeSchema, EntityType.config(sequelize));
 }
 
 module.exports = setupModels;
